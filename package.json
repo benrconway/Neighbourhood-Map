@@ -1,0 +1,25 @@
+{
+  "name": "Udacity-Project5",
+  "version": "1.0.0",
+  "description": "Using a mix of APIs create a single page application (SPA) that will show users a grouping of markers with information about a given neighbourhood. 1) We must have a minimum of 5 markers 2) There must be a mechanism by which the list of places can be filtered 3) It must be designed responsively for users on different devices 4) Markers should load content of their information in an infowindow or DOM  element, and animate when activated. 5) Code is a proper use of Knockout best practices and the MVVM (Model, View, View Model) pattern and avoid updating the DOM with JQuery or JS 6) Supply further location data from another third-party API 7) Incorporate graceful error handling 8) The user interface should be intuitive",
+  "private": "true",
+  "dependencies": {
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benrconway/Neighbourhood-Map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benrconway/Neighbourhood-Map/issues"
+  },
+  "homepage": "https://github.com/benrconway/Neighbourhood-Map#readme"
+}

@@ -2,8 +2,11 @@
 // because its contents are not functional JS, but rather a large
 // JSON-like collection which represents what I might be storing in a
 // database or collecting from an API
+export { categories, baseData };
 
-export default baseData = [
+const categories = ["Cafe", "Restaurants", "Food", "Shopping", "Classes"]
+
+const baseData = [
   {
     name: "Fortitude Coffee",
     location: {lat: 55.9557693, lng: -3.1946877},
@@ -91,7 +94,7 @@ export default baseData = [
   },
   { // Castle Terrace Markets
     name: "Castle Terrace Markets",
-    location: {lat: ,lng: },
+    location: {lat: 55.947786,lng: -3.205703},
     address: "Castle Terrace, Edinburgh EH1 2EN",
     rating: 4,
     website: "http://www.edinburghfarmersmarket.co.uk/",
