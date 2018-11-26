@@ -9,6 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "build": "npx webpack --config webpack.config.js -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -5,14 +5,17 @@
     <title>Neighbourhood Map</title>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="./bundle.js"></script>
+    <script src="../resources/knockout-3.4.2.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry,places&key=AIzaSyC6c-zQOuzBdNKfb0eqbOLYsL9I9wK39Eg&v=3">
     </script>
   </head>
   <body>
     <!-- This is the list shown on the left hand side. -->
-    <aside id="places-list">
-      <select id="filter-options" name="">
+    <aside id="side-bar">
+      <select id="filter-options">
       </select>
+      <div id="places-list">
+      </div>
     </aside>
 
     <section id="map">
