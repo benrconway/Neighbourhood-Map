@@ -21,6 +21,7 @@ import { categories, baseData } from '../resources/data';
     }
   }
 
+  // Renders the list of filter options for the drop down.
   function renderFilter() {
     let filter = document.getElementById("filter-options");
     for (let item of categories) {
@@ -29,9 +30,20 @@ import { categories, baseData } from '../resources/data';
       option.innerText = item;
       filter.appendChild(option);
     }
+    filter.addEventListener("change", filterList);
   }
-  // populate the drop-down with the different filters that
-  // can be applied
+
+  // filters the list
+  function filterList() {
+    let category = this.value;
+    // resets the whole list
+    if (category === "all") {
+      renderList(baseData);
+    } else {
+      let newList = baseData.filter(item => item.type === category);
+      renderList(newList);
+    }
+  }
 
   // have a function that returns the filtered information
 
