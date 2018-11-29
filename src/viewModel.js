@@ -21,6 +21,7 @@ let markers = []
   }
 
   function renderList(listOfItems) {
+    let bounds =  new google.maps.LatLngBounds();
     let list = document.getElementById("places-list");
     while(list.firstChild){list.removeChild(list.firstChild)};
     // iterate over the listOfItems supplied and render the list.
@@ -31,11 +32,16 @@ let markers = []
       div.id = `list-item-${index}`;
       div.addEventListener("click", function(){
         console.log(this.id);
+        markers[index].setMap(map);
       })
       p.innerText = item.name;
       div.appendChild(p);
       list.appendChild(div);
+      bounds.extend(item.location)
     })
+    // populate markers for the listOfItems
+    listOfItems.forEach(renderMarker)
+    map.fitBounds(bounds)
   }
 
   // Renders the list of filter options for the drop down.
@@ -61,6 +67,28 @@ let markers = []
       let newList = baseData.filter(item => item.type === type);
       renderList(newList);
     }
+  }
+
+  // Creates markers for a given array of values.
+  function renderMarker(item, index) {
+    let marker = new google.maps.Marker({
+      position: item.location,
+      title: item.name,
+      id: `list-item-${index}`
+    });
+    console.log(`Render marker called for: ${item.name}`);
+    marker.setMap(map);
+    // change icon to indicate which has been nominated.
+
+
+    // info window stuff.
+
+    console.log(markers);
+    markers.push(marker);
+  }
+
+  function checkMarkers() {
+    markers.forEach((marker) => {console.log(marker);})
   }
 
   // have a function that returns the filtered information
