@@ -21,7 +21,9 @@ let markers = []
   }
 
   function renderList(listOfItems) {
-    let bounds =  new google.maps.LatLngBounds();
+    // before rendering, clear all the markers from the map
+    clearMarkers();
+    let bounds = new google.maps.LatLngBounds();
     let list = document.getElementById("places-list");
     while(list.firstChild){list.removeChild(list.firstChild)};
     // iterate over the listOfItems supplied and render the list.
@@ -76,19 +78,19 @@ let markers = []
       title: item.name,
       id: `list-item-${index}`
     });
-    console.log(`Render marker called for: ${item.name}`);
     marker.setMap(map);
     // change icon to indicate which has been nominated.
 
-
     // info window stuff.
 
-    console.log(markers);
     markers.push(marker);
   }
 
-  function checkMarkers() {
-    markers.forEach((marker) => {console.log(marker);})
+  function clearMarkers(){
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    })
+    markers = [];
   }
 
   // have a function that returns the filtered information

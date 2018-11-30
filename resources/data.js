@@ -110,7 +110,7 @@ const baseData = [
     info: "Quirky and unusual, cards, gifts and more",
     type: "shopping"
   },
-  { // Kuk Sool Won
+  { // Kuk Sool Won 55.970814,-3.1762435
     name: "Kuk Sool Won",
     location: {lat: 55.970848, lng: -3.1779271},
     address: "82 Jane St, Edinburgh EH6 5HG",
@@ -119,7 +119,7 @@ const baseData = [
     info: "Learn this Korean Martial Art here in Edinburgh!",
     type: "classes"
   },
-  { // rick young
+  { // rick young 55.970577,-3.173358
     name: "Rick Young's Black Belt Academy",
     location: {lat: 55.9705895, lng: -3.1733582},
     address: "9A Duke St, Edinburgh EH6 8HG",
@@ -128,9 +128,9 @@ const baseData = [
     info: "Professional level classes in a variety of Martial arts.",
     type: "classes"
   },
-  { // santosa yoga
+  { // santosa yoga 55.962491,-3.1774705
     name: "Santosa Yoga",
-    location: {lat: 55.962478, lng: -3.179075},
+    location: {lat: 55.962491, lng: -3.1774705},
     address: "21 Albert St, Edinburgh EH7 5LH",
     rating: 4,
     website: "https://studio.santosa.co.uk/",
@@ -138,7 +138,7 @@ const baseData = [
           "and a cafe full of delicious sweeties!",
     type: "classes"
   },
-  { // Gathering Essence
+  { // Gathering Essence 55.957347,-3.1882825
     name: "Gathering Essence",
     location: {lat: 55.9574466, lng: -3.1899461},
     address: "14A Broughton St Ln, Edinburgh EH1 3LY",
