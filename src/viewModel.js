@@ -1,5 +1,6 @@
 import { categories, baseData } from '../resources/data';
 
+
 let map;
 
 let listData;
@@ -76,7 +77,8 @@ let markers = []
     let marker = new google.maps.Marker({
       position: item.location,
       title: item.name,
-      id: `list-item-${index}`
+      id: `list-item-${index}`,
+      icon: '../resources/images/icons/meditation.png'
     });
     marker.setMap(map);
     // change icon to indicate which has been nominated.
