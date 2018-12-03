@@ -1,6 +1,5 @@
 import { categories, baseData } from '../resources/data';
 
-
 let map;
 
 let listData;
@@ -34,7 +33,6 @@ let markers = []
       div.className = "list-item";
       div.id = `list-item-${index}`;
       div.addEventListener("click", function(){
-        console.log(this.id);
         markers[index].setMap(map);
       })
       p.innerText = item.name;
@@ -78,11 +76,18 @@ let markers = []
       position: item.location,
       title: item.name,
       id: `list-item-${index}`,
-      icon: '../resources/images/icons/meditation.png'
+      icon: '../resources/images/icons/cafe-off.png'
     });
     marker.setMap(map);
     // change icon to indicate which has been nominated.
-
+    marker.addListener("click", function() {
+      let array = this.icon.split('-');
+      if(array[1] === "off.png"){
+        marker.setIcon(array[0] + "-on.png");
+      } else {
+        marker.setIcon(array[0] + "-off.png");
+      }
+    })
     // info window stuff.
 
     markers.push(marker);
