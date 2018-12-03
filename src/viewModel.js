@@ -76,7 +76,7 @@ let markers = []
       position: item.location,
       title: item.name,
       id: `list-item-${index}`,
-      icon: '../resources/images/icons/cafe-off.png'
+      icon: `../resources/images/icons/${item.type}-off.png`
     });
     marker.setMap(map);
     // change icon to indicate which has been nominated.

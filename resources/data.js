@@ -4,7 +4,7 @@
 // database or collecting from an API
 export { categories, baseData };
 
-const categories = ["Cafe", "Restaurants", "Food", "Shopping", "Classes"]
+const categories = ["Cafe", "Restaurants", "Markets", "Shopping", "Classes"]
 
 const baseData = [
   {
@@ -90,7 +90,7 @@ const baseData = [
     rating: 4.5,
     website: "http://www.stockbridgemarket.com/",
     info: "Great markets, open Sundays 10am-5pm.",
-    type: "food"
+    type: "markets"
   },
   { // Castle Terrace Markets
     name: "Castle Terrace Markets",
@@ -99,7 +99,7 @@ const baseData = [
     rating: 4,
     website: "http://www.edinburghfarmersmarket.co.uk/",
     info: "Great variety of produce, open Saturday 9am-2pm.",
-    type: "food"
+    type: "markets"
   },
   { // Cat's Miaou
     name: "Cat's Miaou",
