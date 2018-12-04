@@ -32,6 +32,7 @@ function renderList(listOfItems) {
     let p = document.createElement("p")
     div.className = "list-item";
     div.id = `list-item-${index}`;
+    // If the div is clicked, toggle the marker.
     div.addEventListener("click", function(){
       toggleMarker(div.id)
     })
@@ -95,7 +96,7 @@ function clearMarkers(){
   markers = [];
 }
 
-
+// Toggles a given marker by its ID
 function toggleMarker(id){
   let marker = markers.find((item) => {return item.id === id});
   let array = marker.icon.split('-');
@@ -105,13 +106,5 @@ function toggleMarker(id){
     marker.setIcon(array[0] + "-off.png");
   }
 }
-// have a function that returns the filtered information
-
-// also have one that returns all the information
-
-// have a click even listener for clicking on an entry on the list
-
-// have a listener that is called when clicking on the marker
-
 
 window.addEventListener("DOMContentLoaded", init);
