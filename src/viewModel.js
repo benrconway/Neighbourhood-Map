@@ -2,14 +2,16 @@ import { categories, baseData } from '../resources/data';
 
 let map;
 
-let listData;
+let listData = baseData;
 
-let markers = []
+let markers = [];
+
+let infowindows = [];
 
 // start with a view that is populated with all the information
 function init() {
   initMap();
-  renderList(baseData);
+  renderList(listData);
   renderFilter();
 }
 
@@ -63,11 +65,12 @@ function filterList() {
   let type = this.value;
   // if the type is all, return the whole list
   if (type === "all") {
-    renderList(baseData);
+    listData = baseData;
+    renderList(listData);
   } else {
   // or filter the list as is appropriate
-    let newList = baseData.filter(item => item.type === type);
-    renderList(newList);
+    let listData = baseData.filter(item => item.type === type);
+    renderList(listData);
   }
 }
 
@@ -85,14 +88,13 @@ function renderMarker(item, index) {
     toggleMarker(marker.id)
   })
   // info window stuff.
+  let infowindow = new google.maps.InfoWindow()
 
   markers.push(marker);
 }
 
 function clearMarkers(){
-  markers.forEach((marker) => {
-    marker.setMap(null);
-  })
+  markers.forEach((marker) => {marker.setMap(null);})
   markers = [];
 }
 
@@ -102,9 +104,16 @@ function toggleMarker(id){
   let array = marker.icon.split('-');
   if(array[1] === "off.png"){
     marker.setIcon(array[0] + "-on.png");
+    displayInfoWindow(id, marker);
   } else {
     marker.setIcon(array[0] + "-off.png");
   }
+}
+
+function displayInfoWindow(id, marker) {
+  let infowindow = new google.maps.InfoWindow();
+  let source = listData[id.split("-")[2]];
+  infowindow.open(map, marker);
 }
 
 window.addEventListener("DOMContentLoaded", init);
