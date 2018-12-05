@@ -95,8 +95,11 @@ function renderMarker(item, index) {
 }
 
 function createInfoWindow(item) {
+  let content = `<a href="${item.website}" target="_blank">`
+  content +=`<h3>${item.name}</h3></a>`
+  content += `<p>${item.info}<br> Rating:${item.rating}/5</p>`
   return new google.maps.InfoWindow({
-    content: item.info
+    content: content
   })
 }
 
