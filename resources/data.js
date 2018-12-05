@@ -9,7 +9,7 @@ const categories = ["Cafe", "Restaurants", "Markets", "Shopping", "Classes"]
 const baseData = [
   {
     name: "Fortitude Coffee",
-    location: {lat: 55.95578, lng: -3.1930675},
+    location: {lat: 55.955760, lng: -3.192489},
     address: "3C York Pl, Edinburgh EH1 3EB",
     rating: 3.5,
     website: "http://www.fortitudecoffee.com/",
@@ -19,7 +19,7 @@ const baseData = [
   },
   {
     name: "Chocolate Tree",
-    location: {lat: 55.936714, lng: -3.2079645},
+    location: {lat: 55.936699, lng: -3.207364},
     address: "123 Bruntsfield Pl, Edinburgh EH10 4EQ",
     rating: 3.5,
     website: "https://www.choctree.co.uk/",
@@ -28,7 +28,7 @@ const baseData = [
   },
   {
     name: "Machina Espresso",
-    location: {lat: 55.942674, lng: -3.2016435},
+    location: {lat: 55.942678, lng: -3.201071},
     address: "2 Brougham Pl, Tollcross, Edinburgh EH3 9HW",
     rating: 4,
     website: "machina-coffee.co.uk",
@@ -38,7 +38,7 @@ const baseData = [
   },
   {
     name: "The Walnut",
-    location: {lat: 55.961766, lng: -3.1810195},
+    location: {lat: 55.961781, lng: -3.180504},
     address: "9 Croall Pl, Edinburgh EH7 4LT",
     rating: 4,
     website: "https://www.facebook.com/TheWalnutEdinburgh/",
@@ -47,7 +47,7 @@ const baseData = [
   },
   {
     name: "Three Birds",
-    location: {lat: 55.936817, lng: -3.2086095},
+    location: {lat: 55.936815, lng: -3.208061},
     address: "3-5 Viewforth, Edinburgh EH10 4JD",
     rating: 5,
     website: "http://www.threebirds.co.uk/",
@@ -56,7 +56,7 @@ const baseData = [
   },
   {
     name: "TimberYard",
-    location: {lat: 55.94641, lng: -3.2022955},
+    location: {lat: 55.946408, lng: -3.201740},
     address: "10 Lady Lawson St, Edinburgh EH3 9DS",
     rating: 3.5,
     website: "timberyard.co",
@@ -66,7 +66,7 @@ const baseData = [
   },
   {
     name: "Gardener's Cottage",
-    location: {lat: 55.95751, lng: -3.1812155},
+    location: {lat: 55.957480, lng: -3.180655},
     address: "1 Royal Terrace Gardens, London Rd, Edinburgh EH7 5DX",
     rating: 3.5,
     website: "https://www.thegardenerscottage.co/",
@@ -74,7 +74,7 @@ const baseData = [
           " made using sustainable local produce.",
     type: "restaurants"
   },
-  { //55.960858, -3.180615
+  {
     name: "Wizard Drops",
     location: {lat: 55.960858, lng: -3.180615},
     address: "105 Brunswick St, Edinburgh EH7 5HR",
@@ -85,7 +85,7 @@ const baseData = [
   },
   {
     name: "Stockbridge Markets",
-    location: {lat: 55.957577, lng: -3.2089115},
+    location: {lat: 55.957522, lng: -3.208316},
     address: "Saunders St, Edinburgh EH3 6TQ",
     rating: 4.5,
     website: "http://www.stockbridgemarket.com/",
@@ -94,14 +94,14 @@ const baseData = [
   },
   {
     name: "Castle Terrace Markets",
-    location: {lat: 55.947779,lng: -3.2040625},
+    location: {lat: 55.947750, lng: -3.203305},
     address: "Castle Terrace, Edinburgh EH1 2EN",
     rating: 4,
     website: "http://www.edinburghfarmersmarket.co.uk/",
     info: "Great variety of produce, open Saturday 9am-2pm.",
     type: "markets"
   },
-  { 
+  {
     name: "Cat's Miaou",
     location: {lat: 55.959683, lng: -3.182499},
     address: "36 Elm Row, Edinburgh EH7 4AH",
@@ -112,7 +112,7 @@ const baseData = [
   },
   {
     name: "Kuk Sool Won",
-    location: {lat: 55.970814, lng: -3.1762435},
+    location: {lat: 55.970849, lng: -3.175714},
     address: "82 Jane St, Edinburgh EH6 5HG",
     rating: 4,
     website: "http://www.martialarts-ksw.co.uk/",
@@ -121,7 +121,7 @@ const baseData = [
   },
   {
     name: "Rick Young's Black Belt Academy",
-    location: {lat: 55.970577, lng: -3.173358},
+    location: {lat: 55.970587, lng: -3.171149},
     address: "9A Duke St, Edinburgh EH6 8HG",
     rating: 4,
     website: "http://www.rick-young.co.uk/",
@@ -130,7 +130,7 @@ const baseData = [
   },
   {
     name: "Santosa Yoga",
-    location: {lat: 55.962491, lng: -3.17747055},
+    location: {lat: 55.962470, lng: -3.176879},
     address: "21 Albert St, Edinburgh EH7 5LH",
     rating: 4,
     website: "https://studio.santosa.co.uk/",
@@ -140,7 +140,7 @@ const baseData = [
   },
   {
     name: "Gathering Essence",
-    location: {lat: 55.957347, lng: -3.1882825},
+    location: {lat: 55.957443, lng: -3.187744},
     address: "14A Broughton St Ln, Edinburgh EH1 3LY",
     rating: 4,
     website: "http://www.gatheringessence.com/",
