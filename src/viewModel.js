@@ -11,7 +11,7 @@ let infowindows = [];
 // start with a view that is populated with all the information
 function init() {
   initMap();
-  renderList(listData);
+  renderList();
   renderFilter();
 }
 
@@ -22,21 +22,22 @@ function initMap() {
   });
 }
 
-function renderList(listOfItems) {
+function renderList() {
   // before rendering, clear all the markers from the map
   clearMarkers();
+  clearInfoWindows();
   let bounds = new google.maps.LatLngBounds();
   let list = document.getElementById("places-list");
   while(list.firstChild){list.removeChild(list.firstChild)};
   // iterate over the listOfItems supplied and render the list.
-  listOfItems.forEach((item, index) => {
+  listData.forEach((item, index) => {
     let div = document.createElement("div");
     let p = document.createElement("p")
     div.className = "list-item";
     div.id = `list-item-${index}`;
     // If the div is clicked, toggle the marker.
     div.addEventListener("click", function(){
-      toggleMarker(div.id)
+      toggleInfo(div.id)
     })
     p.innerText = item.name;
     div.appendChild(p);
@@ -44,7 +45,7 @@ function renderList(listOfItems) {
     bounds.extend(item.location)
   })
   // populate markers for the listOfItems
-  listOfItems.forEach(renderMarker)
+  listData.forEach(renderMarker)
   map.fitBounds(bounds)
 }
 
@@ -66,11 +67,11 @@ function filterList() {
   // if the type is all, return the whole list
   if (type === "all") {
     listData = baseData;
-    renderList(listData);
+    renderList();
   } else {
   // or filter the list as is appropriate
-    let listData = baseData.filter(item => item.type === type);
-    renderList(listData);
+    listData = baseData.filter(item => item.type === type);
+    renderList();
   }
 }
 
@@ -85,35 +86,61 @@ function renderMarker(item, index) {
   marker.setMap(map);
   // change icon to indicate which has been nominated.
   marker.addListener("click", ()=> {
-    toggleMarker(marker.id)
+    toggleInfo(marker.id)
   })
   // info window stuff.
-  let infowindow = new google.maps.InfoWindow()
-
+  let infowindow = createInfoWindow(item, index);
+  infowindows.push(infowindow)
   markers.push(marker);
 }
 
+function createInfoWindow(item) {
+  return new google.maps.InfoWindow({
+    content: item.info
+  })
+}
+
 function clearMarkers(){
-  markers.forEach((marker) => {marker.setMap(null);})
+  markers.forEach((marker) => {marker.setMap(null);});
   markers = [];
 }
 
+function clearInfoWindows() {
+  infowindows.forEach((infowindow) => {infowindow.close();});
+  infowindows = [];
+}
+
 // Toggles a given marker by its ID
-function toggleMarker(id){
+function toggleInfo(id){
   let marker = markers.find((item) => {return item.id === id});
   let array = marker.icon.split('-');
   if(array[1] === "off.png"){
     marker.setIcon(array[0] + "-on.png");
-    displayInfoWindow(id, marker);
+    openInfoWindow(id.split("-")[2], marker);
   } else {
     marker.setIcon(array[0] + "-off.png");
+    closeInfoWindow(id.split("-")[2])
   }
 }
 
-function displayInfoWindow(id, marker) {
-  let infowindow = new google.maps.InfoWindow();
-  let source = listData[id.split("-")[2]];
+function openInfoWindow(id, marker) {
+  let source = listData[id];
+  let infowindow = infowindows[id]
+  // let infowindow = new google.maps.InfoWindow({
+  //   content: source.info
+  // });
   infowindow.open(map, marker);
+  // marker.addListener("click", function(){
+  //   infowindow.close();
+  // })
 }
+
+function closeInfoWindow(id) {
+  let infowindow = infowindows[id];
+  infowindow.close();
+}
+
+
+
 
 window.addEventListener("DOMContentLoaded", init);

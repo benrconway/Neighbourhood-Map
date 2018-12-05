@@ -74,9 +74,9 @@ const baseData = [
           " made using sustainable local produce.",
     type: "restaurants"
   },
-  {
+  { //55.960858, -3.180615
     name: "Wizard Drops",
-    location: {lat: 55.960876, lng: -3.1812065},
+    location: {lat: 55.960858, lng: -3.180615},
     address: "105 Brunswick St, Edinburgh EH7 5HR",
     rating: 4,
     website: "https://www.facebook.com/Wizardrops-752335164807445/",
@@ -101,9 +101,9 @@ const baseData = [
     info: "Great variety of produce, open Saturday 9am-2pm.",
     type: "markets"
   },
-  {
+  { 
     name: "Cat's Miaou",
-    location: {lat: 55.959687, lng: -3.18305351},
+    location: {lat: 55.959683, lng: -3.182499},
     address: "36 Elm Row, Edinburgh EH7 4AH",
     rating: 3.5,
     website: "http://www.thecatsmiaou.co.uk/",
