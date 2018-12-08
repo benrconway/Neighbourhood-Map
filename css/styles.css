@@ -3,6 +3,14 @@ body {
   flex-wrap: wrap;
 }
 
+canvas {
+  margin-left: 10px;
+}
+
+.activeDiv {
+  background-color: #79E869;
+}
+
 .list-item :hover {
   cursor: pointer;
 }

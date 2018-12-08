@@ -95,9 +95,12 @@ function renderMarker(item, index) {
 }
 
 function createInfoWindow(item) {
-  let content = `<a href="${item.website}" target="_blank">`
-  content +=`<h3>${item.name}</h3></a>`
-  content += `<p>${item.info}<br> Rating:${item.rating}/5</p>`
+  let index = listData.indexOf(item);
+  let content = `<a href="${item.website}" target="_blank"><h3>` +
+  `${item.name}</h3></a><p>${item.info}<br> `+
+  `<div><span>Current Weather:</span><canvas id="weather-info-${index}"` +
+  ` width="32" height="32"></canvas></div>` +
+  `Rating:${item.rating}/5</p>`
   return new google.maps.InfoWindow({
     content: content
   })
@@ -117,32 +120,100 @@ function clearInfoWindows() {
 function toggleInfo(id){
   let marker = markers.find((item) => {return item.id === id});
   let array = marker.icon.split('-');
+  let index = id.split('-')[2];
   if(array[1] === "off.png"){
     marker.setIcon(array[0] + "-on.png");
-    openInfoWindow(id.split("-")[2], marker);
+    openInfoWindow(index, marker);
+    toggleDiv(id);
   } else {
     marker.setIcon(array[0] + "-off.png");
-    closeInfoWindow(id.split("-")[2])
+    closeInfoWindow(index);
+    toggleDiv(id);
   }
 }
 
-function openInfoWindow(id, marker) {
-  let source = listData[id];
-  let infowindow = infowindows[id]
-  // let infowindow = new google.maps.InfoWindow({
-  //   content: source.info
-  // });
-  infowindow.open(map, marker);
-  // marker.addListener("click", function(){
-  //   infowindow.close();
-  // })
+function toggleDiv(id) {
+  let div = document.getElementById(id);
+  let classes = div.className;
+  if (div.className.includes("activeDiv")){
+    div.className = "list-item";
+  } else {
+    div.className += " activeDiv";
+  }
 }
 
-function closeInfoWindow(id) {
-  let infowindow = infowindows[id];
+function openInfoWindow(index, marker) {
+  let source = listData[index];
+  let infowindow = infowindows[index]
+  infowindow.open(map, marker);
+  google.maps.event.addListener(infowindow, 'domready', function(){
+    weatherWindow(index);
+  })
+}
+
+function closeInfoWindow(index) {
+  let infowindow = infowindows[index];
   infowindow.close();
 }
 
+function weatherWindow(index) {
+  let item = listData[index];
+  let canvas = document.getElementById(`weather-info-${index}`)
+  let url = "https://api.darksky.net/forecast/35b1bbf5c2aa447a6ed43ceb0caadc28/"
+  url += `${item.location.lat},${item.location.lng}`
+  let xhr = new XMLHttpRequest()
+  xhr.open('GET', url)
+  xhr.onerror = function(){
+    alert("An error occured retrieving weather information.")
+  }
+
+  xhr.addEventListener('load', function () {
+    let jsonString = xhr.responseText
+    let data = JSON.parse(jsonString)
+    let icon = data.currently.icon
+    setSkycon(icon, canvas)
+  })
+  xhr.send()
+}
+
+function setSkycon(weatherType, canvas) {
+  let skycons = new Skycons({ 'color': 'black' })
+  let skycon = null
+  switch (weatherType) {
+    case 'clear-day':
+      skycon = Skycons.CLEAR_DAY
+      break
+    case 'clear-night':
+      skycon = Skycons.CLEAR_NIGHT
+      break
+    case 'rain':
+      skycon = Skycons.RAIN
+      break
+    case 'snow':
+      skycon = Skycons.SNOW
+      break
+    case 'sleet':
+      skycon = Skycons.SLEET
+      break
+    case 'wind':
+      skycon = Skycons.WIND
+      break
+    case 'fog':
+      skycon = Skycons.FOG
+      break
+    case 'cloudy':
+      skycon = Skycons.CLOUDY
+      break
+    case 'partly-cloudy-day':
+      skycon = Skycons.PARTLY_CLOUDY_DAY
+      break
+    case 'partly-cloudy-night':
+      skycon = Skycons.PARTLY_CLOUDY_NIGHT
+      break
+  }
+  skycons.set(canvas, skycon)
+  skycons.play()
+}
 
 
 
