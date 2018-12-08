@@ -1,4 +1,5 @@
 import { categories, baseData } from '../resources/data';
+import knockout from '../resources/knockout-3.4.2';
 
 let map;
 
