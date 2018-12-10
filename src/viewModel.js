@@ -1,9 +1,11 @@
 import { categories, baseData } from '../resources/data';
-import knockout from '../resources/knockout-3.4.2';
+let myViewModel = function (){
 
 let map;
 
+
 let listData = baseData;
+let categoryList = new ko.observableArray(categories)
 
 let markers = [];
 
@@ -11,9 +13,9 @@ let infowindows = [];
 
 // start with a view that is populated with all the information
 function init() {
-  initMap();
-  renderList();
-  renderFilter();
+  // initMap();
+  // renderList();
+  // renderFilter();
 }
 
 function initMap() {
@@ -215,7 +217,8 @@ function setSkycon(weatherType, canvas) {
   skycons.set(canvas, skycon)
   skycons.play()
 }
+}
 
+ko.applyBindings(new myViewModel())
 
-
-window.addEventListener("DOMContentLoaded", init);
+// window.addEventListener("DOMContentLoaded", init);

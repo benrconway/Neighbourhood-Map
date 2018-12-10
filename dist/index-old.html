@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Neighbourhood Map</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="./bundle.js"></script>
+    <script src="../resources/knockout-3.4.2.js"></script>
     <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry,places&key=AIzaSyC6c-zQOuzBdNKfb0eqbOLYsL9I9wK39Eg&v=3">
     </script>
@@ -12,19 +14,20 @@
     <!-- This is the list shown on the left hand side. -->
     <aside id="side-bar">
       <label for="filter-options">Choose a filter:</label>
-      <select data-bind="foreach: categoryList,  event:{change: filterList}">
-        <option data-bind="value: $data.toLowerCase(), text: $data">
+      <!-- <select id="filter-options"> -->
+      <select data-bind="foreach: categoryList">
+        <option value="all">Everything</option>
+        <option data-bind="text: $data">
       </select>
-      <div data-bind="foreach: listData">
-        <div class="list-item" data-bind="text: name"></div>
+      <div id="places-list">
       </div>
     </aside>
 
-    <!-- <section id="map"> -->
+    <section id="map">
       <!-- Where the map will go. -->
       <!-- TODO: add error path which shows the user that the map
       couldn't/didn't load -->
-    <!-- </section> -->
+    </section>
 
     <footer>
       <div>
@@ -59,6 +62,4 @@
     </footer>
 
   </body>
-  <script src="../resources/knockout-3.4.2.js"></script>
-  <script src="./bundle.js"></script>
 </html>

@@ -4,7 +4,7 @@
 // database or collecting from an API
 export { categories, baseData };
 
-const categories = ["Cafe", "Restaurants", "Markets", "Shopping", "Classes"]
+const categories = ["Everything", "Cafe", "Restaurants", "Markets", "Shopping", "Classes"]
 
 const baseData = [
   {
