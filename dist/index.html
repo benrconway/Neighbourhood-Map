@@ -16,15 +16,15 @@
         <option data-bind="value: $data.toLowerCase(), text: $data">
       </select>
       <div data-bind="foreach: listData">
-        <div class="list-item" data-bind="text: name"></div>
+        <div class="list-item" data-bind="text: name, attr: {id: $index}"></div>
       </div>
     </aside>
 
-    <!-- <section id="map"> -->
+    <section id="map">
       <!-- Where the map will go. -->
       <!-- TODO: add error path which shows the user that the map
       couldn't/didn't load -->
-    <!-- </section> -->
+    </section>
 
     <footer>
       <div>

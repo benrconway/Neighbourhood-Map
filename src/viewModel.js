@@ -1,14 +1,9 @@
 import { categories, baseData } from '../resources/data';
 let myViewModel = function (){
-
+  
 let map;
-
-
 let listData = baseData;
-let categoryList = new ko.observableArray(categories)
-
 let markers = [];
-
 let infowindows = [];
 
 // start with a view that is populated with all the information
