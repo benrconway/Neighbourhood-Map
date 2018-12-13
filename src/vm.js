@@ -1,16 +1,8 @@
 import { categories, baseData } from '../resources/data';
+import { Place } from './models/places';
 
-const Place = function (data){
-  this.name = ko.observable(data.name)
-  this.info = ko.observable(data.clickCount)
-  this.website = ko.observable(data.imgSrc)
-  this.rating = ko.observable(data.rating)
-  this.address = ko.observable(data.address)
-  this.location = ko.observable(data.location)
-  this.type = ko.observable(data.type)
-}
 
-let viewModel = function(){
+let viewModel = function() {
   this.categoryList = ko.observableArray(categories);
   this.listData = ko.observableArray();
 
@@ -47,8 +39,8 @@ function initMap() {
 
 function init() {
   initMap();
-  createElements(vm.listData());
-  displayElements(markers);
+  // createElements(vm.listData());
+  // displayElements(markers);
 }
 
 function createElements(listData) {
