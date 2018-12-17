@@ -12,11 +12,16 @@
     <!-- This is the list shown on the left hand side. -->
     <aside id="side-bar">
       <label for="filter-options">Choose a filter:</label>
-      <select data-bind="foreach: categoryList,  event:{change: filterList}">
+      <select data-bind="foreach: categoryList, event:{change: filterList}">
         <option data-bind="value: $data.toLowerCase(), text: $data">
       </select>
       <div data-bind="foreach: listData">
-        <div class="list-item" data-bind="text: name, attr: {id: $index}"></div>
+        <div class="list-item"
+             data-bind="text: name,
+                        attr: {id: $index},
+                        css: {activeDiv: active},
+                        click: $parent.clickDiv">
+        </div>
       </div>
     </aside>
 
