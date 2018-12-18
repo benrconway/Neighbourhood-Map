@@ -12,7 +12,7 @@ let viewModel = function() {
   this.listData = ko.observableArray();
 
   this.filterList = function(object, event) {
-    let type = event.currentTarget.options[event.AT_TARGET].value;
+    let type = event.srcElement.selectedOptions[0].value; // Chrome & Firefox
     // let type = event.originalTarget.value; ** Firefox only **
     if(type === "everything"){
       this.refreshList(baseData);
