@@ -13,6 +13,13 @@ users a grouping of markers with information about a given neighbourhood.
 7) Incorporate graceful error handling
 8) The user interface should be intuitive
 
-In this project, there will be a use of a hard-coded data source(the Model),
-an index.html(the View) and a View Model that will controls the interaction
- between the two, using the JS framework Knockout.
+As part of this project we were required to use a third party api to collect
+information relative to all the different locales we chose to display.
+
+Seeing as my information was covering many different types of place and re-use
+of Google's Api's was not allowed, I opted to use the Dark Sky weather API and
+I make individual calls when the infowindow is opened and I present an animated
+weather icon to alert the user to the current weather in that location.
+
+To run all functionality of this application, you will need to have a CORS
+ extension enabled, something like *this* or *that*
