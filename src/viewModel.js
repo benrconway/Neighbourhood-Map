@@ -12,9 +12,8 @@ let viewModel = function() {
   this.listData = ko.observableArray();
 
   this.filterList = function(object, event) {
-    debugger;
     let type = event.currentTarget.options[event.AT_TARGET].value;
-    // let type = event.originalTarget.value;
+    // let type = event.originalTarget.value; ** Firefox only **
     if(type === "everything"){
       this.refreshList(baseData);
       renderMapElements(this.listData());
