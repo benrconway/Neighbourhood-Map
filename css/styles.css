@@ -18,7 +18,8 @@ canvas {
 .list-item {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  margin: 2px;
+  margin: 5px;
+  padding: 5px;
 }
 
 #side-bar {
