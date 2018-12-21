@@ -10,6 +10,7 @@ let viewModel = function() {
   let self = this;
   this.categoryList = ko.observableArray(categories);
   this.listData = ko.observableArray();
+  this.listOpen = ko.observable(false);
 
   this.filterList = function(object, event) {
     let type = event.srcElement.selectedOptions[0].value; // Chrome & Firefox
@@ -42,6 +43,10 @@ let viewModel = function() {
     }
   }
 
+  this.openList = function() {
+    this.listOpen(!this.listOpen());
+    console.log(this.listOpen());
+  }
 };
 
 let vm = new viewModel();

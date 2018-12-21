@@ -10,8 +10,13 @@
     </script>
   </head>
   <body>
+    <header>
+        <button class="list-button" data-bind="click: openList">Contents</button>
+        <span class="page-title">Neighbourhood Map</span>
+    </header>
+
     <!-- This is the list shown on the left hand side. -->
-    <aside id="side-bar">
+    <aside id="side-bar" data-bind="css: {open: listOpen}">
       <label for="filter-options">Choose a filter:</label>
       <select data-bind="foreach: categoryList, event:{change: filterList}">
         <option data-bind="value: $data.toLowerCase(), text: $data">
@@ -20,13 +25,13 @@
         <div class="list-item"
              data-bind="text: name,
                         attr: {id: $index},
-                        css: {activeDiv: active},
+                        css: {active: active},
                         click: $parent.clickDiv">
         </div>
       </div>
     </aside>
 
-    <section id="map">
+    <section id="map" data-bind="css: {open: listOpen}">
       <!-- Where the map will go. -->
       <!-- TODO: add error path which shows the user that the map
       couldn't/didn't load -->
