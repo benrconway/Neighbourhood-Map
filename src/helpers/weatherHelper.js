@@ -10,15 +10,22 @@ export function weatherRequest(item, index) {
 
   xhr.addEventListener('load', function () {
     let jsonString = xhr.responseText;
-    let data = JSON.parse(jsonString);
-    let icon = data.currently.icon;
+    // During testing an error was missed by XHR.onerror, I have added
+    // this try/catch block.
+    try {
+      let data = JSON.parse(jsonString);
+      let icon = data.currently.icon;
+    }
+    catch(error) {
+      alert(jsonString);
+    }
     setSkycon(icon, canvas);
   })
 
   xhr.send();
 };
 
-
+// This function applies the correct Skycon for a given weather type.
 function setSkycon(weatherType, canvas) {
   let skycons = new Skycons({ 'color': 'black' });
   let skycon = null;

@@ -12,9 +12,9 @@ let viewModel = function() {
   this.listData = ko.observableArray();
   this.listOpen = ko.observable(false);
 
+  // This will filter the list
   this.filterList = function(object, event) {
-    let type = event.srcElement.selectedOptions[0].value; // Chrome & Firefox
-    // let type = event.originalTarget.value; ** Firefox only **
+    let type = event.srcElement.selectedOptions[0].value;
     if(type === "everything"){
       this.refreshList(baseData);
       renderMapElements(this.listData());
@@ -25,16 +25,21 @@ let viewModel = function() {
     }
   }
 
+  // Underlying function which replaces the observableArray to make DRY code
   this.refreshList = function(newList) {
     this.listData.removeAll();
-    newList.forEach((item, index) => {this.listData.push(new Place(item, index))});
+    newList.forEach((item, index) => {
+      this.listData.push(new Place(item, index))
+    });
   }
 
+  // Called when a list item is clicked
   this.clickDiv = function() {
     self.toggleDiv(this.id);
     toggleInfo(this.id);
   }
 
+  // Activates the boolean attached for styles change on the list item
   this.toggleDiv = function(index) {
     if (this.listData()[index].active()) {
       this.listData()[index].active(false);
@@ -49,6 +54,7 @@ let viewModel = function() {
   }
 };
 
+// Create an instance of the viewModel and give it a full list of data
 let vm = new viewModel();
 vm.refreshList(baseData);
 
@@ -60,6 +66,7 @@ function initMap() {
   });
 }
 
+// Create and store elements for rendering on the map
 function renderMapElements(listData) {
   // before rendering, clear all the markers from the map
   clearMarkers();
@@ -75,7 +82,7 @@ function renderMapElements(listData) {
   map.fitBounds(bounds)
 }
 
-// Creates markers for a given array of values.
+// Creates markers for a given location.
 function renderMarker(item, index) {
   let marker = new google.maps.Marker({
     position: item.location(),
@@ -84,17 +91,18 @@ function renderMarker(item, index) {
     icon: `../resources/images/icons/${item.type()}-off.png`
   });
   marker.setMap(map);
-  // change icon to indicate which has been nominated.
+  // toggle the div and marker when the marker is clicked
   marker.addListener("click", () => {
     toggleInfo(marker.id);
     vm.toggleDiv(marker.id);
   })
-  // info window stuff.
+  // Create and populate an infowindow for this list item
   let infowindow = createInfoWindow(item, index);
   infowindows.push(infowindow);
   markers.push(marker);
 }
 
+// Takes in a list item and its index and returns a google maps InfoWindow
 function createInfoWindow(item, index) {
   let content = `<a href="${item.website()}" target="_blank"><h3>` +
   `${item.name()}</h3></a><p>${item.info()}<br> `+
@@ -106,16 +114,20 @@ function createInfoWindow(item, index) {
   })
 }
 
+// Clears the array of google markers
 function clearMarkers(){
   markers.forEach((marker) => {marker.setMap(null);});
   markers = [];
 }
 
+// Clears array of InfoWindows
 function clearInfoWindows() {
   infowindows.forEach((infowindow) => {infowindow.close();});
   infowindows = [];
 }
 
+// Takes an id for a marker and changes its icon and opens/closes associated
+// infowindow
 function toggleInfo(id){
   let marker = markers.find((item) => {return item.id === id});
   let array = marker.icon.split('-');
@@ -128,6 +140,7 @@ function toggleInfo(id){
   }
 }
 
+// Toggles open an infowindow when a marker or list item is clicked
 function openInfoWindow(index, marker) {
   let infowindow = infowindows[index];
   infowindow.open(map, marker);
@@ -136,11 +149,13 @@ function openInfoWindow(index, marker) {
   })
 }
 
+// Closes an InfoWindow when the marker is toggled off
 function closeInfoWindow(index) {
   let infowindow = infowindows[index];
   infowindow.close();
 }
 
+// Initiates the map and creates markers and other elements from the viewModel
 function init() {
   initMap();
   renderMapElements(vm.listData());
