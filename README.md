@@ -42,14 +42,19 @@ Steps to run project:
 
 
 ##### Responsiveness:
-Given the very simple interface on this SPA, I have decided that devices in portrait
-would give me coverage of the thinner aspects of responsiveness. Following this
-I have implemented only truly 1 breakpoint. Below this, is thin or small devices
-and I hide the aside and show a button for retrieving it, above this everything
-is visible and can be enjoyed.
+Given the very simple interface on this SPA, I have institued breakpoints that
+support a min-width of 350px and work to increase from there keeping text a
+readable size and at 800px it swaps from an off-canvas list to being in view.
+This was tested in both Chrome and FireFox, if any issues are found please
+contact me with details so I can correct them.
 
 
 ###### Desired Additions:
 - Include a server that runs when on an "npm start" which serves the page
 - More styling
 - More information/markers, etc
+
+
+Thank you for enjoying this website, if you find any bugs, have any issues
+or have any desires for future functionality, please contact me at
+benrconway84@gmail.com
