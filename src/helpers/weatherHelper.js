@@ -10,9 +10,10 @@ export function weatherRequest(item, index) {
 
   xhr.addEventListener('load', function () {
     let jsonString = xhr.responseText;
-    // During testing an error was missed by XHR.onerror, I have added
-    // this try/catch block.
     let icon;
+
+    // During testing an error was missed by XHR.onerror, to answer this issue
+    // I have implemented this try/catch block for the JSON parsing.
     try {
       let data = JSON.parse(jsonString);
       icon = data.currently.icon;

@@ -50,7 +50,6 @@ let viewModel = function() {
 
   this.openList = function() {
     this.listOpen(!this.listOpen());
-    console.log(this.listOpen());
   }
 };
 
@@ -88,7 +87,7 @@ function renderMarker(item, index) {
     position: item.location(),
     title: item.name(),
     id: index,
-    icon: `./resources/images/icons/${item.type()}-off.png`
+    icon: `../src/resources/images/icons/${item.type()}-off.png`
   });
   marker.setMap(map);
   // toggle the div and marker when the marker is clicked

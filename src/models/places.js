@@ -10,5 +10,4 @@ export class Place {
     this.type = ko.observable(data.type);
     this.active = ko.observable(false);
   }
-
 }
