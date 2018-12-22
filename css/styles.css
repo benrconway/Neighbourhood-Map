@@ -46,7 +46,6 @@ header {
   }
 }
 
-
 @media screen and (min-width: 500px) {
   body {
     font-size: 1.5em;
@@ -54,7 +53,6 @@ header {
 }
 
 @media screen and (max-width: 799px) {
-
   #side-bar {
     width: 35%;
     position:absolute;
