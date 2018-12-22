@@ -68,11 +68,6 @@ header {
     background-color: white;
   }
 
-  #map.open {
-    left: 30%;
-    overflow: hidden;
-  }
-
   .list-button {
     display: inline;
   }
