@@ -1,4 +1,4 @@
-import { categories, baseData } from '../resources/data';
+import { categories, baseData } from './resources/data';
 import { Place } from './models/places';
 import { weatherRequest } from './helpers/weatherHelper'
 
@@ -88,7 +88,7 @@ function renderMarker(item, index) {
     position: item.location(),
     title: item.name(),
     id: index,
-    icon: `../resources/images/icons/${item.type()}-off.png`
+    icon: `./resources/images/icons/${item.type()}-off.png`
   });
   marker.setMap(map);
   // toggle the div and marker when the marker is clicked
