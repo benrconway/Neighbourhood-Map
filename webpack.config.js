@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: "none",
-  watch: true,
+  watch: false,
   entry: './src/viewModel.js',
   output: {
     filename: 'bundle.js',
