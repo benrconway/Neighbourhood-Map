@@ -12,9 +12,10 @@ export function weatherRequest(item, index) {
     let jsonString = xhr.responseText;
     // During testing an error was missed by XHR.onerror, I have added
     // this try/catch block.
+    let icon;
     try {
       let data = JSON.parse(jsonString);
-      let icon = data.currently.icon;
+      icon = data.currently.icon;
     }
     catch(error) {
       alert(jsonString);
